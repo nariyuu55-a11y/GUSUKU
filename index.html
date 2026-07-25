@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社GUSUKU | 採用支援</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --base-color: #FFFFFF;
+    --main-color: #1C4BAA;
+    --sub-color: #333F50;
+    --accent-color: #00A399;
+    --teal-hero: #32AEC0;
+    --bordeaux: #C1714F;
+    --text-muted: #5D6B7C;
+    --bg-light-sub: #F4F7FA;
+    --border-color: #E2E8F0;
+    --card-shadow: 0 10px 30px -5px rgba(51,63,80,0.05), 0 4px 10px -2px rgba(51,63,80,0.02);
+    --card-shadow-hover: 0 20px 25px -5px rgba(51,63,80,0.1), 0 10px 10px -5px rgba(51,63,80,0.04);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--base-color);
+    color: var(--sub-color);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-en { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background-color: var(--teal-hero);
+    position: relative;
+    overflow: hidden;
+    height: 620px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-noise, .cta-noise {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-shapes {
+    position: absolute;
+    right: -4px; top: 0; bottom: 0;
+    width: 52%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .hero-text-left {
+    position: relative;
+    z-index: 3;
+    padding: 0 0 0 60px;
+    width: 56%;
+  }
+  .hero-line {
+    display: flex;
+    align-items: flex-end;
+    line-height: 0.88;
+    margin-bottom: 4px;
+  }
+  /* RECRUIT & PARTNER. in bordeaux */
+  .hero-en {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(64px, 9vw, 126px);
+    font-weight: 800;
+    color: var(--bordeaux);
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+  }
+  .hero-black-box {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 9px 18px 10px;
+    font-size: clamp(13px, 1.5vw, 19px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-top: 20px;
+    margin-bottom: 14px;
+  }
+  .hero-company-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: rgba(0,0,0,0.6);
+    text-transform: uppercase;
+    margin-bottom: 26px;
+  }
+
+  /* ===== SHARED BUTTON ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.25s ease;
+    border: none;
+  }
+  .btn:hover { background: #333; transform: translateY(-2px); }
+
+  /* CONTAINER & SECTION */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 96px 0; }
+  .section-header { margin-bottom: 48px; }
+  .section-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; color: var(--accent-color);
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .section h2 { font-size: 28px; font-weight: 700; color: var(--main-color); letter-spacing: -0.01em; }
+
+  /* PROFILE */
+  .profile-box {
+    background: #fff; border-radius: 20px; padding: 48px;
+    display: flex; gap: 40px; align-items: flex-start;
+    box-shadow: var(--card-shadow); border: 1px solid var(--border-color);
+  }
+  .profile-avatar {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: #E8F6F5; border: 2px solid #A8F3EE;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; flex-shrink: 0;
+  }
+  .profile-title { font-size: 14px; color: var(--main-color); font-weight: 700; margin-bottom: 12px; }
+  .profile-text { font-size: 15px; color: var(--sub-color); line-height: 1.8; }
+  .strength-box {
+    margin-top: 24px; background: var(--bg-light-sub); border-radius: 12px; padding: 24px;
+    border-left: 4px solid var(--accent-color); border-top: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+  }
+  .strength-box .strength-title { font-size: 14px; font-weight: 700; color: var(--main-color); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .strength-box p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  /* SERVICES */
+  .bg-sub-section { background: var(--bg-light-sub); }
+  .service-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .service-card {
+    background: #fff; border-radius: 16px; padding: 36px;
+    border: 1px solid var(--border-color); box-shadow: var(--card-shadow); transition: all 0.3s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); border-color: #A8F3EE; }
+  .service-card .icon { font-size: 28px; margin-bottom: 16px; display: inline-block; }
+  .service-card h3 { font-size: 18px; font-weight: 700; color: var(--main-color); margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* RESULTS */
+  .result-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 32px; }
+  .result-num { background: #fff; border-radius: 16px; padding: 32px 20px; text-align: center; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); }
+  .result-num .num { font-size: 40px; font-weight: 800; color: var(--accent-color); line-height: 1; margin-bottom: 8px; }
+  .result-num .desc { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .case-card { background: #fff; border-radius: 16px; padding: 36px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+  .case-card .case-tag { display: inline-block; background: #E8F6F5; color: var(--accent-color); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .case-card h3 { font-size: 18px; font-weight: 700; color: var(--sub-color); margin-bottom: 16px; }
+  .case-flow { display: flex; align-items: center; gap: 16px; background: var(--bg-light-sub); padding: 16px 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border-color); }
+  .case-flow .before { color: #94A3B8; font-size: 14px; text-decoration: line-through; }
+  .case-flow .arrow { color: var(--accent-color); font-weight: 700; }
+  .case-flow .after { color: var(--main-color); font-weight: 700; font-size: 16px; }
+
+  /* PRICE */
+  .price-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .price-card { background: #fff; border-radius: 20px; padding: 40px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); position: relative; }
+  .price-card.featured { border: 2px solid var(--accent-color); background: linear-gradient(180deg,#fff 0%,#F0FDFB 100%); }
+  .price-card.featured::before {
+    content: 'RECOMMENDED'; position: absolute; top: -12px; right: 24px;
+    background: var(--accent-color); color: #fff;
+    font-family: 'Plus Jakarta Sans',sans-serif; font-size: 10px; font-weight: 800;
+    padding: 4px 12px; border-radius: 20px; letter-spacing: 0.1em;
+  }
+  .price-card .plan-name { font-size: 13px; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 700; margin-bottom: 16px; }
+  .price-card .price-num { font-size: 42px; font-weight: 800; color: var(--main-color); line-height: 1; margin-bottom: 8px; }
+  .price-card .price-unit { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .price-card ul { list-style: none; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .price-card ul li { font-size: 14px; color: var(--sub-color); padding: 8px 0; display: flex; align-items: center; gap: 8px; }
+  .price-card ul li::before { content: "✓"; color: var(--accent-color); font-weight: 700; }
+  .price-note { margin-top: 32px; background: #E8F6F5; border-radius: 12px; padding: 20px; font-size: 14px; color: var(--main-color); text-align: center; border: 1px solid #A8F3EE; }
+
+  /* ===== CTA SECTION (Hirono CONTRIBUTION style: teal + grain) ===== */
+  .cta {
+    background-color: var(--teal-hero);
+    position: relative;
+    overflow: hidden;
+    color: #000;
+    padding: 96px 24px;
+    text-align: center;
+  }
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+  }
+  .cta-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: rgba(0,0,0,0.65);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cta h2 { font-size: 32px; font-weight: 700; color: #000; margin-bottom: 16px; }
+  .cta .cta-body { color: rgba(0,0,0,0.75); font-size: 15px; margin-bottom: 36px; line-height: 1.8; }
+
+  /* Partner box — dark on teal */
+  .partner-box {
+    margin-top: 48px;
+    max-width: 640px;
+    margin-left: auto; margin-right: auto;
+    background: rgba(0,0,0,0.12);
+    border-radius: 4px;
+    padding: 28px 32px;
+    text-align: left;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border: 1px solid rgba(0,0,0,0.18);
+    transition: background 0.3s ease;
+  }
+  .partner-box:hover { background: rgba(0,0,0,0.18); }
+  .partner-cta-link {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-decoration-thickness: 2px;
+  }
+  .partner-cta-link:hover { opacity: 0.75; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { height: auto; min-height: 400px; padding: 56px 0 48px; }
+    .hero-text-left { padding: 0 24px; width: 100%; }
+    .hero-shapes { display: none; }
+    .section { padding: 64px 0; }
+    .service-grid, .result-grid, .price-grid { grid-template-columns: 1fr; }
+    .profile-box { flex-direction: column; padding: 32px; gap: 24px; }
+    .partner-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <!-- Grain texture -->
+  <svg class="hero-noise" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="linearRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" seed="5" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </defs>
+    <rect width="100%" height="100%" filter="url(#grain)" opacity="0.20"/>
+  </svg>
+
+  <!-- Staircase shapes (right side) -->
+  <svg class="hero-shapes" viewBox="0 0 740 620" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+    <rect x="44" y="74" width="118" height="554" fill="#DDD8A8" rx="2"/>
+    <rect x="40" y="62" width="118" height="554" fill="#F8F3CA" rx="2"/>
+    <rect x="39" y="61" width="118" height="554" fill="none" stroke="#BDD8E2" stroke-width="2"/>
+    <rect x="166" y="114" width="118" height="514" fill="#DDD8A8" rx="2"/>
+    <rect x="162" y="102" width="118" height="514" fill="#F8F3CA" rx="2"/>
+    <rect x="161" y="101" width="118" height="514" fill="none" stroke="#BDD8E2" stroke-width="2"/>
+    <rect x="288" y="154" width="118" height="474" fill="#DDD8A8" rx="2"/>
+    <rect x="284" y="142" width="118" height="474" fill="#F8F3CA" rx="2"/>
+    <rect x="283" y="141" width="118" height="474" fill="none" stroke="#BDD8E2" stroke-width="2"/>
+    <rect x="410" y="194" width="118" height="434" fill="#DDD8A8" rx="2"/>
+    <rect x="406" y="182" width="118" height="434" fill="#F8F3CA" rx="2"/>
+    <rect x="405" y="181" width="118" height="434" fill="none" stroke="#BDD8E2" stroke-width="2"/>
+    <rect x="532" y="234" width="118" height="394" fill="#DDD8A8" rx="2"/>
+    <rect x="528" y="222" width="118" height="394" fill="#F8F3CA" rx="2"/>
+    <rect x="527" y="221" width="118" height="394" fill="none" stroke="#BDD8E2" stroke-width="2"/>
+  </svg>
+
+  <!-- Left text -->
+  <div class="hero-text-left">
+    <div class="hero-line">
+      <span class="hero-en">RECRUIT</span>
+    </div>
+    <div class="hero-line" style="margin-bottom:0;">
+      <span class="hero-en">PARTNER.</span>
+    </div>
+    <div>
+      <span class="hero-black-box">御社の採用課題を、一緒に解決します。</span>
+    </div>
+    <p class="hero-company-label" style="margin-top:14px;">GUSUKU INC. PORTFOLIO SITE</p>
+    <a href="https://forms.gle/uemzS5QhmASXjCsU7" target="_blank" class="btn">無料相談はこちら</a>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label font-en">About</p>
+      <h2>プロフィール</h2>
+    </div>
+    <div class="profile-box">
+      <div class="profile-avatar">👤</div>
+      <div>
+        <p class="profile-title">株式会社GUSUKU　代表取締役　成田</p>
+        <p class="profile-text">
+          採用に悩む中小企業を支援したいという想いから独立。<br>
+          「とりあえず求人票を出す」ではなく、なぜ採れないのかを根本から分析し、御社だけの採用戦略を一緒に設計・運用します。
+        </p>
+        <div class="strength-box">
+          <p class="strength-title">💡 採用に関する「3つの視点」</p>
+          <p>求人メディア、人材紹介（エージェント）、そして事業会社（採用・マネジメント側）という3つの異なる立場での実務経験があるため、戦略立案から現場での運用・定着までを一貫して支援可能です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section bg-sub-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label font-en">Services</p>
+      <h2>サービス内容</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="icon">📋</span>
+        <h3>採用戦略の設計</h3>
+        <p>ターゲット・チャネル・メッセージを御社の状況に合わせてゼロから設計。テンプレートではないオーダーメイドのプランをご提供します。</p>
+      </div>
+      <div class="service-card">
+        <span class="icon">✍️</span>
+        <h3>求人票・スカウト文の作成</h3>
+        <p>「見てもらえる」「応募したくなる」原稿を作成。既存の求人票の改善も迅速に対応いたします。</p>
+      </div>
+      <div class="service-card">
+        <span class="icon">🎯</span>
+        <h3>面接設計・評価基準の整備</h3>
+        <p>採用基準の言語化から面接フローの設計まで。ミスマッチを減らし、入社後の定着率を高めます。</p>
+      </div>
+      <div class="service-card">
+        <span class="icon">🔄</span>
+        <h3>採用運用のサポート・PDCA</h3>
+        <p>採用活動の進捗管理と改善提案を継続的に実施。「作って終わり」ではなく、成果が出るまで徹底的に伴走します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label font-en">Results</p>
+      <h2>実績・事例</h2>
+    </div>
+    <div class="result-grid">
+      <div class="result-num">
+        <p class="num font-en">6<span style="font-size:20px;">件</span></p>
+        <p class="desc">10日間で獲得した応募数</p>
+      </div>
+      <div class="result-num">
+        <p class="num font-en" style="font-size:24px; color:#94A3B8;">COMING SOON</p>
+        <p class="desc">事例02（近日公開）</p>
+      </div>
+      <div class="result-num">
+        <p class="num font-en" style="font-size:24px; color:#94A3B8;">COMING SOON</p>
+        <p class="desc">事例03（近日公開）</p>
+      </div>
+    </div>
+    <div class="case-card">
+      <span class="case-tag font-en">CASE 01</span>
+      <h3>応募0件からの脱出｜求人票・チャネル全面改善</h3>
+      <div class="case-flow">
+        <span class="before">課題：求人をだしても応募0件</span>
+        <span class="arrow">➔</span>
+        <span class="after">10日間で 6件 の応募を獲得</span>
+      </div>
+      <p style="font-size:14px; color:var(--text-muted);">採用ターゲットの再定義・求人票の全面改稿・媒体選定の見直しにより、短期間で応募獲得に成功しました。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="section bg-sub-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label font-en">Pricing</p>
+      <h2>料金・プラン</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card featured">
+        <p class="plan-name font-en">STANDARD</p>
+        <p class="price-num font-en">5<span style="font-size:20px;">万円〜</span></p>
+        <p class="price-unit">/ 月額（最低3ヶ月〜）</p>
+        <ul>
+          <li>採用戦略の設計</li>
+          <li>求人票・スカウト文の作成・改善</li>
+          <li>面接設計・評価基準の整備</li>
+          <li>採用運用のサポート・PDCA</li>
+          <li>月次レポート・定例MTG</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <p class="plan-name font-en">SPOT / BUSINESS PARTNER</p>
+        <p class="price-num" style="font-size:32px;">要お問合せ</p>
+        <p class="price-unit">ご状況に合わせて最適なプランをご提案</p>
+        <ul>
+          <li>単発の採用課題ヒアリング</li>
+          <li>求人票のみのスポット改善</li>
+          <li>採用支援事業との業務提携</li>
+        </ul>
+      </div>
+    </div>
+    <div class="price-note">
+      💡 初回相談・採用課題診断は<strong>無料</strong>です。まずはお気軽にご連絡ください。
+    </div>
+  </div>
+</section>
+
+<!-- CTA (Hirono CONTRIBUTION-style: teal + grain) -->
+<section class="cta" id="contact">
+  <!-- Grain texture — same as hero -->
+  <svg class="cta-noise" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <use href="#grain"/>
+    <rect width="100%" height="100%" filter="url(#grain)" opacity="0.20"/>
+  </svg>
+
+  <div class="cta-inner container">
+    <p class="cta-label font-en">Contact</p>
+    <h2>採用のお悩み、まずは話しましょう。</h2>
+    <p class="cta-body">
+      初回相談は無料です。御社の採用課題をヒアリングし、<br>何ができるかを一緒に考えます。
+    </p>
+    <a href="https://forms.gle/uemzS5QhmASXjCsU7" target="_blank" class="btn">無料相談はこちら</a>
+
+    <!-- Business partnership box -->
+    <div class="partner-box">
+      <span style="font-size:36px; flex-shrink:0;">🤝</span>
+      <div style="flex:1;">
+        <h3 style="color:#000; margin-bottom:10px; font-size:16px; font-weight:700;">採用支援の業務提携、積極受付中</h3>
+        <a href="https://forms.gle/QF8GVRDTPNvM2P4T6" target="_blank" class="partner-cta-link">
+          【採用支援の業務提携の企業様はこちらをクリック】
+        </a>
+        <p style="color:rgba(0,0,0,0.72); font-size:13px; margin:0; line-height:1.7;">
+          採用支援事業をお持ちの企業様との業務提携を歓迎しています。外注でのご依頼など、お気軽にご相談ください。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
